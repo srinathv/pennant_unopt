@@ -1,0 +1,22 @@
+To use the cmake build system:
+
+mkdir build
+cd build
+# now make sure cray-mpich + rocm modules are loaded and are consistent with each other
+# for the mi300s
+
+cat config.sh
+
+#! /usr/bin/env bash
+
+
+rm -rf CMake*
+cmake \
+  -DPENNANT_USE_GPU_AWARE_MPI=ON \
+  -DPENNANT_FAST_MATH=ON \
+  -DPENNANT_MEM_ALIGN=ON \
+  -DPENNANT_ARCH_GFX942=ON \
+  ../.
+
+chmod +x config.sh
+./config.sh && VERBOSE=1 make 
