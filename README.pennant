@@ -1,0 +1,86 @@
+***** Notice ******
+
+This is an interim CORAL-2 benchmark package provided by HPE in August, 2022.
+This package has been supplied as a convenience for use on early access systems
+at ORNL and LLNL. The main focus is to demonstrate current application
+functionality on systems with HPE Cray EX235A "Bard Peak" nodes running the COS
+operating system. The package contains source code optimized by HPE, with the
+help of AMD. The contents are a work in progress, and updated versions will be
+provided for the official acceptance testing of the full CORAL-2 systems.
+
+PENNANT
+=======
+
+A. Description
+This is README for building and running the CORAL-2 PENNANT benchmark.
+
+B. TLDR Instructions
+The following steps will build and run the PENNANT benchmark on
+HPE BardPeak systems using the Cray Compute Environment (CCE) and SLURM
+
+   sbatch build_pennant.sh
+
+C. Building
+The HIP optimized version of the PENNANT source code is provided in
+the pennant-hip subdirectory and a SLURM bactch script "build_pennant.slurm"
+is provided to build the PENNANT executable. This should be run on a
+compute node, with an AMD MI250x GPU, so that the GPU can be detected:
+
+   sbatch build_pennant.sh
+
+The pennant binary will be created in
+
+   pennant/build/pennant
+
+
+D. Running
+The SLURM batch scripts "run_pennant_<nodes>.slurm" are provided for running
+PENNANT. The script runs the on the number of nodes allocated to the job and
+weak-scales a single node configuration to run on the allocated number of
+nodes. The configuration chosen for the single node case is sedovflatx8 (the
+target CORAL-2 benchmark is sedovflatx240).
+
+   cd runs
+   sbatch -S0  run_<node count>.sh
+
+The full scale run on 2352 nodes. To change the number of nodes just change 
+#SBATCH --nodes=<node count>   
+
+in 
+	runs/run_full_scale.sh
+
+
+Run output will be created  in a uniquely named subdirectory 
+- the subdirectory name follows the requested benchmark
+specifications
+
+   pennant_R<M>_sedovflatx<SIZE>_<N>nodes.<SLURM_JOBID>
+
+where the <SIZE> benchmark specification is the weak-scaled size described
+above, <N> is the number of nodes and <M> is the number of ranks (on the
+HPE BardPeak systems with four MI250x GPUs, <M> = 8 * <N>).
+
+The standard output from the benchmark run is caputured in the file:
+
+  pennant_R<M>_sedovflatx<SIZE>_<N>nodes.<SLURM_JOBID>/pennant_R<M>_sedovflatx<SIZE>_<N>nodes.<SLURM_JOBID>
+
+E. Verification
+The runs using sedovflatx16 can be officially validated against sample
+output from the DOE Vulcan system provided in the test/sample_outputs/vulcan
+directory. The final energies should be compared
+
+   $ grep -A1 "^Energy" reference_output/pennant_R32_sedovflatx16_4nodes.281224/pennant.out | tail -2
+   Energy check:  total energy  =   9.871670e-01
+   (internal =   7.631237e-01, kinetic =   2.240433e-01)
+   $ grep -A1 "^Energy" reference_output/pennant_R64_sedovflatx16_8nodes.281221/pennant.out | tail -2
+   Energy check:  total energy  =   9.871670e-01
+   (internal =   7.631237e-01, kinetic =   2.240433e-01)
+   $ grep -A1 "^Energy" test/sample_outputs/vulcan/sedovflatx16.out | tail -2
+   Energy check:  total energy  =   9.871670e-01
+   (internal =   7.631237e-01, kinetic =   2.240433e-01)
+
+The solution is considered valid if each of the energy metrics match the
+values obtained on Vulcan to within a relative error of 1E-5.
+
+
+

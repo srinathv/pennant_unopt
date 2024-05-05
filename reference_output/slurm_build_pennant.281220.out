@@ -1,0 +1,84 @@
+The nodes in use are: frontier07304
+
+Currently Loaded Modules:
+  1) craype-x86-trento                     10) cce/13.0.0
+  2) libfabric/1.15.0.0                    11) craype/2.7.13
+  3) craype-network-ofi                    12) cray-dsmml/0.2.2
+  4) perftools-base/21.12.0                13) cray-mpich/8.1.12
+  5) xpmem/2.3.2-2.2_6.4__g93dd7ee.shasta  14) cray-libsci/21.08.1.2
+  6) cray-pmi/6.0.16                       15) PrgEnv-cray/8.2.0
+  7) cray-pmi-lib/6.0.16                   16) DefApps/default
+  8) emacs/27.2                            17) rocm/4.5.0
+  9) craype-accel-amd-gfx90a
+
+ 
+
++ export MPICH_GPU_SUPPORT_ENABLED=1
++ MPICH_GPU_SUPPORT_ENABLED=1
++ export FI_CXI_ATS=0
++ FI_CXI_ATS=0
++ cd pennant-hip
+++ perl -e 'print time'
++ t1=1644595545
++ srun -n1 make clean
+making depends for timers/scoped_timers.cpp
+making depends for src/Driver.cc
+making depends for src/ExportGold.cc
+making depends for src/GenMesh.cc
+making depends for src/HydroBC.cc
+making depends for src/Hydro.cc
+making depends for src/HydroGPU.cc
+making depends for src/HydroMPI.cc
+making depends for src/ImportGMV.cc
+making depends for src/InputFile.cc
+making depends for src/main.cc
+making depends for src/Mesh.cc
+making depends for src/Parallel.cc
+making depends for src/PolyGas.cc
+making depends for src/QCS.cc
+making depends for src/TTS.cc
+making depends for src/WriteXY.cc
+rm -f build/pennant build/WriteXY.o build/TTS.o build/QCS.o build/PolyGas.o build/Parallel.o build/Mesh.o build/main.o build/InputFile.o build/ImportGMV.o build/HydroMPI.o build/HydroGPU.o build/Hydro.o build/HydroBC.o build/GenMesh.o build/ExportGold.o build/Driver.o build/scoped_timers.o
++ srun -n1 make -j8
+compiling src/WriteXY.cc
+| Build configuration: | with MPI | without JIT | with Timers |
+compiling src/TTS.cc
+compiling src/QCS.cc
+compiling src/PolyGas.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/WriteXY.o src/WriteXY.cc
+compiling src/Parallel.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/TTS.o src/TTS.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/QCS.o src/QCS.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/PolyGas.o src/PolyGas.cc
+compiling src/Mesh.cc
+compiling src/main.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/Parallel.o src/Parallel.cc
+compiling src/InputFile.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/Mesh.o src/Mesh.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/main.o src/main.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/InputFile.o src/InputFile.cc
+compiling src/ImportGMV.cc
+compiling src/HydroMPI.cc
+compiling src/HydroGPU.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/ImportGMV.o src/ImportGMV.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/HydroMPI.o src/HydroMPI.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/HydroGPU.o src/HydroGPU.cc
+compiling src/Hydro.cc
+compiling src/HydroBC.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/Hydro.o src/Hydro.cc
+compiling src/GenMesh.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/HydroBC.o src/HydroBC.cc
+compiling src/ExportGold.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/GenMesh.o src/GenMesh.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/ExportGold.o src/ExportGold.cc
+compiling src/Driver.cc
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/Driver.o src/Driver.cc
+compiling timers/scoped_timers.cpp
+/opt/rocm-4.5.0/bin/hipcc -O3 -g -I. -I/opt/rocm-4.5.0/rocthrust/include -I/opt/rocm-4.5.0/rocprim/include  -I/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/include -I/opt/rocm-4.5.0/include  -std=c++14 -Wall -Werror -DUSE_MPI  -Wno-unused-command-line-argument -amdgpu-target=gfx90a -ffp-contract=fast -ffast-math -funsafe-math-optimizations -Itimers -DUSE_TIMERS -g  -c -o build/scoped_timers.o timers/scoped_timers.cpp
+linking build/pennant
+/opt/rocm-4.5.0/bin/hipcc -DUSE_MPI  -o build/pennant build/WriteXY.o build/TTS.o build/QCS.o build/PolyGas.o build/Parallel.o build/Mesh.o build/main.o build/InputFile.o build/ImportGMV.o build/HydroMPI.o build/HydroGPU.o build/Hydro.o build/HydroBC.o build/GenMesh.o build/ExportGold.o build/Driver.o build/scoped_timers.o -Wno-unused-command-line-argument -L/opt/cray/pe/mpich/8.1.12/gtl/lib -lmpi_gtl_hsa -L/opt/cray/pe/mpich/8.1.12/ofi/crayclang/10.0/lib -lmpi
+| Build configuration: | with MPI | without JIT | with Timers |
+++ perl -e 'print time'
++ t2=1644595587
++ echo 'Job is done!'
+Job is done!

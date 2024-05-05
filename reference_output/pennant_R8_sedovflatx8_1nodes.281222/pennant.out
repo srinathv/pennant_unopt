@@ -1,0 +1,559 @@
+********************
+Running PENNANT v0.9
+********************
+
+Running on 8 MPI PE(s)
+--- Mesh Information ---
+Points:  16596961
+Zones:  16588800
+Sides:  66355200
+Edges:  33201600
+Side chunks:  64800
+Point chunks:  16224
+Chunk size:  1024
+------------------------
+Running Hydro on device...
+Energy check:  total energy  =   9.871670e-01
+(internal =   9.871670e-01, kinetic =   0.000000e+00)
+End cycle      1, time = 5.00000e-07, dt = 5.00000e-07, wall = 3.81994e-03
+dt limiter: 
+End cycle    100, time = 1.51375e-03, dt = 1.74274e-05, wall = 2.57512e-01
+dt limiter: Hydro dV/V limit for z = 208900
+End cycle    200, time = 3.28601e-03, dt = 1.68548e-05, wall = 2.58788e-01
+dt limiter: Hydro dV/V limit for z = 237501
+End cycle    300, time = 5.05889e-03, dt = 1.70088e-05, wall = 2.58686e-01
+dt limiter: Hydro dV/V limit for z = 266515
+End cycle    400, time = 6.83375e-03, dt = 1.83657e-05, wall = 2.58871e-01
+dt limiter: Hydro dV/V limit for z = 294084
+End cycle    500, time = 8.60929e-03, dt = 1.87845e-05, wall = 2.58584e-01
+dt limiter: Hydro dV/V limit for z = 326395
+End cycle    600, time = 1.03834e-02, dt = 1.74492e-05, wall = 2.58583e-01
+dt limiter: Hydro dV/V limit for z = 354786
+End cycle    700, time = 1.21561e-02, dt = 1.68589e-05, wall = 2.58938e-01
+dt limiter: Hydro dV/V limit for z = 382714
+End cycle    800, time = 1.39289e-02, dt = 1.70024e-05, wall = 2.58793e-01
+dt limiter: Hydro dV/V limit for z = 412405
+End cycle    900, time = 1.57037e-02, dt = 1.83475e-05, wall = 2.59086e-01
+dt limiter: Hydro dV/V limit for z = 441101
+End cycle   1000, time = 1.74793e-02, dt = 1.87985e-05, wall = 2.58869e-01
+dt limiter: Hydro dV/V limit for z = 471936
+End cycle   1100, time = 1.92533e-02, dt = 1.74578e-05, wall = 2.58931e-01
+dt limiter: Hydro dV/V limit for z = 500174
+End cycle   1200, time = 2.10261e-02, dt = 1.68612e-05, wall = 2.59516e-01
+dt limiter: Hydro dV/V limit for z = 529705
+End cycle   1300, time = 2.27989e-02, dt = 1.69957e-05, wall = 2.60633e-01
+dt limiter: Hydro dV/V limit for z = 558305
+End cycle   1400, time = 2.45736e-02, dt = 1.83213e-05, wall = 2.61181e-01
+dt limiter: Hydro dV/V limit for z = 586878
+End cycle   1500, time = 2.63491e-02, dt = 1.88167e-05, wall = 2.61631e-01
+dt limiter: Hydro dV/V limit for z = 618202
+End cycle   1600, time = 2.81232e-02, dt = 1.74687e-05, wall = 2.62193e-01
+dt limiter: Hydro dV/V limit for z = 646825
+End cycle   1700, time = 2.98960e-02, dt = 1.68641e-05, wall = 2.62521e-01
+dt limiter: Hydro dV/V limit for z = 675305
+End cycle   1800, time = 3.16688e-02, dt = 1.69951e-05, wall = 2.61911e-01
+dt limiter: Hydro dV/V limit for z = 704078
+End cycle   1900, time = 3.34484e-02, dt = 1.85113e-05, wall = 2.61956e-01
+dt limiter: Hydro dV/V limit for z = 732746
+End cycle   2000, time = 3.52504e-02, dt = 1.90867e-05, wall = 2.61804e-01
+dt limiter: Hydro dV/V limit for z = 764020
+End cycle   2100, time = 3.70823e-02, dt = 1.80308e-05, wall = 2.62096e-01
+dt limiter: Hydro dV/V limit for z = 792487
+End cycle   2200, time = 3.89473e-02, dt = 1.78556e-05, wall = 2.61908e-01
+dt limiter: Hydro dV/V limit for z = 820582
+End cycle   2300, time = 4.08472e-02, dt = 1.87120e-05, wall = 2.61501e-01
+dt limiter: Hydro dV/V limit for z = 849928
+End cycle   2400, time = 4.27835e-02, dt = 2.15496e-05, wall = 2.61999e-01
+dt limiter: Hydro dV/V limit for z = 878734
+End cycle   2500, time = 4.47521e-02, dt = 2.01526e-05, wall = 2.62197e-01
+dt limiter: Hydro dV/V limit for z = 910030
+End cycle   2600, time = 4.67524e-02, dt = 1.93499e-05, wall = 2.62110e-01
+dt limiter: Hydro dV/V limit for z = 938463
+End cycle   2700, time = 4.87852e-02, dt = 1.94967e-05, wall = 2.62131e-01
+dt limiter: Hydro dV/V limit for z = 965955
+End cycle   2800, time = 5.08519e-02, dt = 2.09564e-05, wall = 2.62193e-01
+dt limiter: Hydro dV/V limit for z = 996339
+End cycle   2900, time = 5.29540e-02, dt = 2.27235e-05, wall = 2.61978e-01
+dt limiter: Hydro dV/V limit for z = 1026801
+End cycle   3000, time = 5.50859e-02, dt = 2.12335e-05, wall = 2.61848e-01
+dt limiter: Hydro dV/V limit for z = 1055690
+End cycle   3100, time = 5.72481e-02, dt = 2.07154e-05, wall = 2.61971e-01
+dt limiter: Hydro dV/V limit for z = 1084265
+End cycle   3200, time = 5.94420e-02, dt = 2.12451e-05, wall = 2.62095e-01
+dt limiter: Hydro dV/V limit for z = 1112608
+End cycle   3300, time = 6.16699e-02, dt = 2.36018e-05, wall = 2.62242e-01
+dt limiter: Hydro dV/V limit for z = 1141838
+End cycle   3400, time = 6.39298e-02, dt = 2.36957e-05, wall = 2.62691e-01
+dt limiter: Hydro dV/V limit for z = 1173078
+End cycle   3500, time = 6.62176e-02, dt = 2.23751e-05, wall = 2.62361e-01
+dt limiter: Hydro dV/V limit for z = 1201089
+End cycle   3600, time = 6.85352e-02, dt = 2.21303e-05, wall = 2.62175e-01
+dt limiter: Hydro dV/V limit for z = 1229135
+End cycle   3700, time = 7.08842e-02, dt = 2.31315e-05, wall = 2.62550e-01
+dt limiter: Hydro dV/V limit for z = 1258958
+End cycle   3800, time = 7.32669e-02, dt = 2.65471e-05, wall = 2.62492e-01
+dt limiter: Hydro dV/V limit for z = 1287657
+End cycle   3900, time = 7.56777e-02, dt = 2.46266e-05, wall = 2.62779e-01
+dt limiter: Hydro dV/V limit for z = 1317995
+End cycle   4000, time = 7.81162e-02, dt = 2.35573e-05, wall = 2.62155e-01
+dt limiter: Hydro dV/V limit for z = 1346874
+End cycle   4100, time = 8.05840e-02, dt = 2.36024e-05, wall = 2.62314e-01
+dt limiter: Hydro dV/V limit for z = 1376244
+End cycle   4200, time = 8.30823e-02, dt = 2.51474e-05, wall = 2.62288e-01
+dt limiter: Hydro dV/V limit for z = 1404207
+End cycle   4300, time = 8.56134e-02, dt = 2.75057e-05, wall = 2.62360e-01
+dt limiter: Hydro dV/V limit for z = 1436110
+End cycle   4400, time = 8.81704e-02, dt = 2.55894e-05, wall = 2.62768e-01
+dt limiter: Hydro dV/V limit for z = 1464115
+End cycle   4500, time = 9.07549e-02, dt = 2.47680e-05, wall = 2.63123e-01
+dt limiter: Hydro dV/V limit for z = 1493155
+End cycle   4600, time = 9.33675e-02, dt = 2.51309e-05, wall = 2.63221e-01
+dt limiter: Hydro dV/V limit for z = 1521416
+End cycle   4700, time = 9.60113e-02, dt = 2.73992e-05, wall = 2.63090e-01
+dt limiter: Hydro dV/V limit for z = 1549499
+End cycle   4800, time = 9.86850e-02, dt = 2.83761e-05, wall = 2.63096e-01
+dt limiter: Hydro dV/V limit for z = 1581471
+End cycle   4900, time = 1.01384e-01, dt = 2.65826e-05, wall = 2.63386e-01
+dt limiter: Hydro dV/V limit for z = 1610794
+End cycle   5000, time = 1.04109e-01, dt = 2.60087e-05, wall = 2.62952e-01
+dt limiter: Hydro dV/V limit for z = 1638471
+End cycle   5100, time = 1.06863e-01, dt = 2.67561e-05, wall = 2.63052e-01
+dt limiter: Hydro dV/V limit for z = 1668001
+End cycle   5200, time = 1.09648e-01, dt = 2.98293e-05, wall = 2.63207e-01
+dt limiter: Hydro dV/V limit for z = 1697048
+End cycle   5300, time = 1.12460e-01, dt = 2.92732e-05, wall = 2.63288e-01
+dt limiter: Hydro dV/V limit for z = 1727788
+End cycle   5400, time = 1.15296e-01, dt = 2.76194e-05, wall = 2.63453e-01
+dt limiter: Hydro dV/V limit for z = 1756094
+End cycle   5500, time = 1.18159e-01, dt = 2.72846e-05, wall = 2.63578e-01
+dt limiter: Hydro dV/V limit for z = 1784982
+End cycle   5600, time = 1.21049e-01, dt = 2.84442e-05, wall = 2.63599e-01
+dt limiter: Hydro dV/V limit for z = 1813029
+End cycle   5700, time = 1.23971e-01, dt = 3.24882e-05, wall = 2.63447e-01
+dt limiter: Hydro dV/V limit for z = 1841281
+End cycle   5800, time = 1.26917e-01, dt = 3.00923e-05, wall = 2.62602e-01
+dt limiter: Hydro dV/V limit for z = 1873816
+End cycle   5900, time = 1.29888e-01, dt = 2.86810e-05, wall = 2.63273e-01
+dt limiter: Hydro dV/V limit for z = 1901488
+End cycle   6000, time = 1.32884e-01, dt = 2.85971e-05, wall = 2.63124e-01
+dt limiter: Hydro dV/V limit for z = 1931260
+End cycle   6100, time = 1.35908e-01, dt = 3.02223e-05, wall = 2.62848e-01
+dt limiter: Hydro dV/V limit for z = 1959713
+End cycle   6200, time = 1.38963e-01, dt = 3.34155e-05, wall = 2.63499e-01
+dt limiter: Hydro dV/V limit for z = 1990994
+End cycle   6300, time = 1.42040e-01, dt = 3.09546e-05, wall = 2.63271e-01
+dt limiter: Hydro dV/V limit for z = 2019715
+End cycle   6400, time = 1.45142e-01, dt = 2.97529e-05, wall = 2.63302e-01
+dt limiter: Hydro dV/V limit for z = 2048004
+End cycle   6500, time = 1.48268e-01, dt = 2.99366e-05, wall = 2.64252e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   6600, time = 1.51422e-01, dt = 3.21181e-05, wall = 2.63883e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   6700, time = 1.54606e-01, dt = 3.41781e-05, wall = 2.63170e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   6800, time = 1.57812e-01, dt = 3.18145e-05, wall = 2.62260e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   6900, time = 1.61041e-01, dt = 3.08470e-05, wall = 2.62378e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7000, time = 1.64294e-01, dt = 3.13169e-05, wall = 2.62251e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7100, time = 1.67577e-01, dt = 3.42057e-05, wall = 2.62187e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7200, time = 1.70886e-01, dt = 3.49675e-05, wall = 2.61697e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7300, time = 1.74217e-01, dt = 3.27243e-05, wall = 2.61209e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7400, time = 1.77571e-01, dt = 3.19575e-05, wall = 2.61177e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7500, time = 1.80950e-01, dt = 3.27758e-05, wall = 2.60370e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7600, time = 1.84357e-01, dt = 3.63316e-05, wall = 2.60449e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7700, time = 1.87790e-01, dt = 3.57822e-05, wall = 2.60529e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7800, time = 1.91243e-01, dt = 3.36502e-05, wall = 2.60832e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   7900, time = 1.94719e-01, dt = 3.30891e-05, wall = 2.61099e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8000, time = 1.98220e-01, dt = 3.42688e-05, wall = 2.61805e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8100, time = 2.01750e-01, dt = 3.86427e-05, wall = 2.61752e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8200, time = 2.05302e-01, dt = 3.65266e-05, wall = 2.61618e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8300, time = 2.08875e-01, dt = 3.45972e-05, wall = 2.62265e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8400, time = 2.12472e-01, dt = 3.42442e-05, wall = 2.61763e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8500, time = 2.16092e-01, dt = 3.57906e-05, wall = 2.62312e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8600, time = 2.19742e-01, dt = 4.05020e-05, wall = 2.62263e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8700, time = 2.23412e-01, dt = 3.72702e-05, wall = 2.62649e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8800, time = 2.27103e-01, dt = 3.55367e-05, wall = 2.63140e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   8900, time = 2.30817e-01, dt = 3.54086e-05, wall = 2.63513e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9000, time = 2.34555e-01, dt = 3.73704e-05, wall = 2.63645e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9100, time = 2.38322e-01, dt = 4.11424e-05, wall = 2.63692e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9200, time = 2.42107e-01, dt = 3.80556e-05, wall = 2.64485e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9300, time = 2.45913e-01, dt = 3.64842e-05, wall = 2.64541e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9400, time = 2.49741e-01, dt = 3.65748e-05, wall = 2.65125e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9500, time = 2.53593e-01, dt = 3.89826e-05, wall = 2.66212e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9600, time = 2.57465e-01, dt = 4.16474e-05, wall = 2.66664e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9700, time = 2.61302e-01, dt = 3.82944e-05, wall = 2.67088e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9800, time = 2.65128e-01, dt = 3.65660e-05, wall = 2.67328e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle   9900, time = 2.68952e-01, dt = 3.64117e-05, wall = 2.67157e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10000, time = 2.72778e-01, dt = 3.83667e-05, wall = 2.67219e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10100, time = 2.76608e-01, dt = 4.15268e-05, wall = 2.67034e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10200, time = 2.80434e-01, dt = 3.83070e-05, wall = 2.66634e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10300, time = 2.84259e-01, dt = 3.65696e-05, wall = 2.67128e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10400, time = 2.88083e-01, dt = 3.64120e-05, wall = 2.67659e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10500, time = 2.91910e-01, dt = 3.83563e-05, wall = 2.69090e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10600, time = 2.95742e-01, dt = 4.15799e-05, wall = 2.69658e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10700, time = 2.99571e-01, dt = 3.83533e-05, wall = 2.70354e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10800, time = 3.03398e-01, dt = 3.66066e-05, wall = 2.70359e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  10900, time = 3.07227e-01, dt = 3.64790e-05, wall = 2.70633e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11000, time = 3.11065e-01, dt = 3.85661e-05, wall = 2.70709e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11100, time = 3.14921e-01, dt = 4.17937e-05, wall = 2.71499e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11200, time = 3.18788e-01, dt = 3.86774e-05, wall = 2.72170e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11300, time = 3.22669e-01, dt = 3.71323e-05, wall = 2.72507e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11400, time = 3.26566e-01, dt = 3.72464e-05, wall = 2.72126e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11500, time = 3.30482e-01, dt = 3.97507e-05, wall = 2.72697e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11600, time = 3.34420e-01, dt = 4.23184e-05, wall = 2.73146e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11700, time = 3.38371e-01, dt = 3.92606e-05, wall = 2.74342e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11800, time = 3.42336e-01, dt = 3.78625e-05, wall = 2.74023e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  11900, time = 3.46318e-01, dt = 3.81487e-05, wall = 2.74239e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12000, time = 3.50320e-01, dt = 4.10731e-05, wall = 2.74572e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12100, time = 3.54341e-01, dt = 4.28725e-05, wall = 2.75649e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12200, time = 3.58376e-01, dt = 3.98596e-05, wall = 2.74990e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12300, time = 3.62424e-01, dt = 3.85882e-05, wall = 2.75789e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12400, time = 3.66488e-01, dt = 3.90546e-05, wall = 2.76128e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12500, time = 3.70574e-01, dt = 4.24103e-05, wall = 2.75923e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12600, time = 3.74678e-01, dt = 4.34099e-05, wall = 2.76901e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12700, time = 3.78794e-01, dt = 4.04754e-05, wall = 2.77097e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12800, time = 3.82925e-01, dt = 3.93188e-05, wall = 2.77438e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  12900, time = 3.87071e-01, dt = 3.99866e-05, wall = 2.77543e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13000, time = 3.91239e-01, dt = 4.37472e-05, wall = 2.78583e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13100, time = 3.95425e-01, dt = 4.39497e-05, wall = 2.78402e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13200, time = 3.99622e-01, dt = 4.11005e-05, wall = 2.79251e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13300, time = 4.03834e-01, dt = 4.00551e-05, wall = 2.78755e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13400, time = 4.08063e-01, dt = 4.09401e-05, wall = 2.79442e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13500, time = 4.12311e-01, dt = 4.50948e-05, wall = 2.81662e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13600, time = 4.16578e-01, dt = 4.45177e-05, wall = 2.82220e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13700, time = 4.20855e-01, dt = 4.17165e-05, wall = 2.83373e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13800, time = 4.25146e-01, dt = 4.07943e-05, wall = 2.82797e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  13900, time = 4.29456e-01, dt = 4.19000e-05, wall = 2.81814e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14000, time = 4.33785e-01, dt = 4.65103e-05, wall = 2.82742e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14100, time = 4.38131e-01, dt = 4.50683e-05, wall = 2.82289e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14200, time = 4.42487e-01, dt = 4.23377e-05, wall = 2.82998e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14300, time = 4.46858e-01, dt = 4.15373e-05, wall = 2.82409e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14400, time = 4.51246e-01, dt = 4.28530e-05, wall = 2.82887e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14500, time = 4.55655e-01, dt = 4.79629e-05, wall = 2.82014e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14600, time = 4.60079e-01, dt = 4.55874e-05, wall = 2.82882e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14700, time = 4.64514e-01, dt = 4.29685e-05, wall = 2.82202e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14800, time = 4.68963e-01, dt = 4.22845e-05, wall = 2.82304e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  14900, time = 4.73429e-01, dt = 4.38012e-05, wall = 2.81006e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15000, time = 4.77918e-01, dt = 4.94211e-05, wall = 2.82208e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15100, time = 4.82418e-01, dt = 4.60902e-05, wall = 2.81985e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15200, time = 4.86930e-01, dt = 4.36011e-05, wall = 2.81849e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15300, time = 4.91458e-01, dt = 4.30374e-05, wall = 2.82273e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15400, time = 4.96001e-01, dt = 4.47776e-05, wall = 2.81915e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15500, time = 5.00567e-01, dt = 5.07970e-05, wall = 2.80500e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15600, time = 5.05144e-01, dt = 4.66112e-05, wall = 2.80386e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15700, time = 5.09733e-01, dt = 4.42238e-05, wall = 2.80712e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15800, time = 5.14337e-01, dt = 4.37936e-05, wall = 2.81528e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  15900, time = 5.18957e-01, dt = 4.57556e-05, wall = 2.80686e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16000, time = 5.23599e-01, dt = 5.12649e-05, wall = 2.80496e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16100, time = 5.28253e-01, dt = 4.71337e-05, wall = 2.81028e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16200, time = 5.32917e-01, dt = 4.48503e-05, wall = 2.80659e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16300, time = 5.37597e-01, dt = 4.45402e-05, wall = 2.80214e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16400, time = 5.42293e-01, dt = 4.67507e-05, wall = 2.80827e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16500, time = 5.47011e-01, dt = 5.17435e-05, wall = 2.81014e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16600, time = 5.51739e-01, dt = 4.76766e-05, wall = 2.81593e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16700, time = 5.56480e-01, dt = 4.54751e-05, wall = 2.80567e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16800, time = 5.61233e-01, dt = 4.52906e-05, wall = 2.80724e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  16900, time = 5.66005e-01, dt = 4.77383e-05, wall = 2.81383e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17000, time = 5.70798e-01, dt = 5.22062e-05, wall = 2.81978e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17100, time = 5.75600e-01, dt = 4.82175e-05, wall = 2.81600e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17200, time = 5.80415e-01, dt = 4.61085e-05, wall = 2.81002e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17300, time = 5.85243e-01, dt = 4.60481e-05, wall = 2.81364e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17400, time = 5.90089e-01, dt = 4.87439e-05, wall = 2.81125e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17500, time = 5.94956e-01, dt = 5.26937e-05, wall = 2.81293e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17600, time = 5.99832e-01, dt = 4.87406e-05, wall = 2.80893e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17700, time = 6.04720e-01, dt = 4.67426e-05, wall = 2.80491e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17800, time = 6.09622e-01, dt = 4.68052e-05, wall = 2.79985e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  17900, time = 6.14541e-01, dt = 4.97905e-05, wall = 2.79715e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18000, time = 6.19482e-01, dt = 5.31835e-05, wall = 2.79437e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18100, time = 6.24431e-01, dt = 4.92760e-05, wall = 2.78360e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18200, time = 6.29392e-01, dt = 4.73763e-05, wall = 2.77686e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18300, time = 6.34366e-01, dt = 4.75674e-05, wall = 2.77494e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18400, time = 6.39359e-01, dt = 5.08413e-05, wall = 2.77088e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18500, time = 6.44371e-01, dt = 5.37030e-05, wall = 2.77048e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18600, time = 6.49393e-01, dt = 4.98031e-05, wall = 2.77383e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18700, time = 6.54426e-01, dt = 4.80107e-05, wall = 2.77675e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18800, time = 6.59473e-01, dt = 4.83255e-05, wall = 2.77432e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  18900, time = 6.64538e-01, dt = 5.19234e-05, wall = 2.77391e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19000, time = 6.69622e-01, dt = 5.42260e-05, wall = 2.78009e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19100, time = 6.74716e-01, dt = 5.03486e-05, wall = 2.78007e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19200, time = 6.79820e-01, dt = 4.86414e-05, wall = 2.78087e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19300, time = 6.84938e-01, dt = 4.90864e-05, wall = 2.78999e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19400, time = 6.90076e-01, dt = 5.29966e-05, wall = 2.80043e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19500, time = 6.95230e-01, dt = 5.47269e-05, wall = 2.79839e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19600, time = 7.00395e-01, dt = 5.08946e-05, wall = 2.80410e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19700, time = 7.05570e-01, dt = 4.92747e-05, wall = 2.79747e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19800, time = 7.10759e-01, dt = 4.98583e-05, wall = 2.80417e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  19900, time = 7.15968e-01, dt = 5.40924e-05, wall = 2.79862e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20000, time = 7.21193e-01, dt = 5.52402e-05, wall = 2.81064e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20100, time = 7.26428e-01, dt = 5.14540e-05, wall = 2.80386e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20200, time = 7.31673e-01, dt = 4.99061e-05, wall = 2.81033e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20300, time = 7.36932e-01, dt = 5.06350e-05, wall = 2.81036e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20400, time = 7.42212e-01, dt = 5.51626e-05, wall = 2.81029e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20500, time = 7.47507e-01, dt = 5.57518e-05, wall = 2.80811e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20600, time = 7.52811e-01, dt = 5.20102e-05, wall = 2.83084e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20700, time = 7.58126e-01, dt = 5.05391e-05, wall = 2.83333e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20800, time = 7.63455e-01, dt = 5.14123e-05, wall = 2.83097e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  20900, time = 7.68805e-01, dt = 5.62273e-05, wall = 2.82246e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21000, time = 7.74170e-01, dt = 5.62605e-05, wall = 2.82351e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21100, time = 7.79542e-01, dt = 5.25726e-05, wall = 2.83713e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21200, time = 7.84926e-01, dt = 5.11729e-05, wall = 2.83369e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21300, time = 7.90325e-01, dt = 5.21976e-05, wall = 2.83267e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21400, time = 7.95743e-01, dt = 5.72828e-05, wall = 2.83439e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21500, time = 8.01177e-01, dt = 5.67956e-05, wall = 2.83015e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21600, time = 8.06618e-01, dt = 5.31257e-05, wall = 2.82849e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21700, time = 8.12070e-01, dt = 5.18062e-05, wall = 2.82744e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21800, time = 8.17538e-01, dt = 5.29762e-05, wall = 2.82460e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  21900, time = 8.23025e-01, dt = 5.83721e-05, wall = 2.82682e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22000, time = 8.28527e-01, dt = 5.73268e-05, wall = 2.81993e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22100, time = 8.34036e-01, dt = 5.36831e-05, wall = 2.82936e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22200, time = 8.39556e-01, dt = 5.24389e-05, wall = 2.82117e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22300, time = 8.45093e-01, dt = 5.37591e-05, wall = 2.82254e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22400, time = 8.50648e-01, dt = 5.94767e-05, wall = 2.81909e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22500, time = 8.56217e-01, dt = 5.78576e-05, wall = 2.82008e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22600, time = 8.61793e-01, dt = 5.42420e-05, wall = 2.82197e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22700, time = 8.67381e-01, dt = 5.30706e-05, wall = 2.81445e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22800, time = 8.72985e-01, dt = 5.45420e-05, wall = 2.81652e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  22900, time = 8.78608e-01, dt = 6.05512e-05, wall = 2.81098e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23000, time = 8.84244e-01, dt = 5.83582e-05, wall = 2.82329e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23100, time = 8.89887e-01, dt = 5.47980e-05, wall = 2.81783e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23200, time = 8.95542e-01, dt = 5.37020e-05, wall = 2.81555e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23300, time = 9.01213e-01, dt = 5.53044e-05, wall = 2.82774e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23400, time = 9.06903e-01, dt = 6.16567e-05, wall = 2.82228e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23500, time = 9.12605e-01, dt = 5.88597e-05, wall = 2.82687e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23600, time = 9.18315e-01, dt = 5.53591e-05, wall = 2.82346e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23700, time = 9.24037e-01, dt = 5.43323e-05, wall = 2.82357e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23800, time = 9.29774e-01, dt = 5.60658e-05, wall = 2.81944e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  23900, time = 9.35531e-01, dt = 6.27573e-05, wall = 2.82665e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24000, time = 9.41299e-01, dt = 5.93732e-05, wall = 2.82301e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24100, time = 9.47075e-01, dt = 5.59233e-05, wall = 2.82004e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24200, time = 9.52863e-01, dt = 5.49620e-05, wall = 2.81859e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24300, time = 9.58665e-01, dt = 5.68204e-05, wall = 2.81792e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24400, time = 9.64489e-01, dt = 6.38230e-05, wall = 2.81962e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24500, time = 9.70322e-01, dt = 5.98739e-05, wall = 2.82584e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24600, time = 9.76164e-01, dt = 5.64852e-05, wall = 2.82373e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24700, time = 9.82017e-01, dt = 5.55911e-05, wall = 2.82358e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24800, time = 9.87885e-01, dt = 5.75766e-05, wall = 2.81531e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  24900, time = 9.93774e-01, dt = 6.49001e-05, wall = 2.83370e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+End cycle  25000, time = 9.99673e-01, dt = 6.03737e-05, wall = 2.82817e-01
+dt limiter: Hydro dV/V limit for z = 2073083
+
+Run complete
+Zones: 16588800
+cycle =  25006,         cstop = 999999
+time  =   1.000000e+00, tstop =   1.000000e+00
+
+*************************************
+hydro cycle run time =   6.820418e+01
+FOM =                    6.082025e+09
+*************************************
+timer stats:
+Kernels, gpuMain1, 2.82 seconds
+Kernels, gpuMain2, 22.72 seconds
+Kernels, gpuMain3a, 0.42 seconds
+Kernels, gpuMain3b, 14.37 seconds
+Kernels, gpuMain4, 16.99 seconds
+Kernels, gpuMain5, 1.80 seconds
+Kernels, localReduceToPoints, 0.52 seconds
+Kernels, reduceToMasterPoints, 0.35 seconds
+Total time for Kernels: 59.99 seconds
+MPI, Allreduce, 0.13 seconds
+MPI, Barrier, 3.85 seconds
+MPI, parallelGather, 1.07 seconds
+MPI, parallelScatter, 0.59 seconds
+Total time for MPI: 5.63 seconds
+MPI device overhead, copyMPIBuffersToSlavePointData_kernel, 0.11 seconds
+MPI device overhead, copyPointValuesToProxies, 0.30 seconds
+MPI device overhead, copySlavePointDataToMPIBuffers_kernel, 0.09 seconds
+Total time for MPI device overhead: 0.51 seconds
+Other, Hydro::doCycle after hydroDoCycle, 0.02 seconds
+Other, Periodic report printing, 0.00 seconds
+Other, copy dtnext values, 0.00 seconds
+Other, hydro->getData(), 0.02 seconds
+Other, meshCheckBadSides, 0.00 seconds
+Total time for Other: 0.05 seconds
+Others, fill_ordered_points, 0.51 seconds
+Total time for Others: 0.51 seconds
+Total time for all timer groups: 66.69 seconds
+Energy check:  total energy  =   9.871670e-01
+(internal =   7.630962e-01, kinetic =   2.240707e-01)
