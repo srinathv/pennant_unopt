@@ -40,12 +40,12 @@ CXXFLAGS := $(CXXFLAGS_OPT)
 # the following assumes the existence of an mpi compiler
 # wrapper called mpicxx
 CXX := CC
-CXXFLAGS += -DUSE_MPI
+CXXFLAGS += -DUSE_MPI -D_OPENMP
 
 # add openmp flags (comment out for serial build)
 CXXFLAGS += $(CXXFLAGS_OPENMP) 
 #LDFLAGS := -Wno-unused-command-line-argument -L${MPICH_DIR}/../../../gtl/lib -lmpi_gtl_hsa -L$(MPICH_DIR)/lib -lmpi
-LDFLAGS := -Wno-unused-command-line-argument -L$(MPICH_DIR)/lib -lmpi
+LDFLAGS := -Wno-unused-command-line-argument -L$(MPICH_DIR)/lib -lmpi -fopenmp
 LDFLAGS += $(CXXFLAGS_OPENMP) #-L/cray/css/users/kjt/opt/profiler/newest/ -lprofiler
 
 LD := $(CXX)
