@@ -152,14 +152,15 @@ void Driver::run() {
         cout << endl;
         cout << "************************************" << endl;
         cout << "hydro cycle run time= " << setw(14) << runtime << endl;
+	cout << "FOM =                  " << setw(14) << (double) mesh->gnumz * cycle / runtime << endl;
         cout << "************************************" << endl;
-	cout << "Kernel 1 time ="<< hydro->runtime1<<endl;
-	cout << "Kernel 2 time ="<< hydro->runtime2<<endl;
-	cout << "Kernel 3 time ="<< hydro->runtime3<<endl;
-	cout << "Kernel 4 time ="<< hydro->runtime4<<endl;
-	cout << "Kernel 5 time ="<< hydro->runtime5<<endl;
-	cout << "MPI time ="<< hydro->mpitime<<endl;
-	cout << "Dt time ="<< dttime<<endl;
+	//cout << "Kernel 1 time ="<< hydro->runtime1<<endl;
+	//cout << "Kernel 2 time ="<< hydro->runtime2<<endl;
+	//cout << "Kernel 3 time ="<< hydro->runtime3<<endl;
+	//cout << "Kernel 4 time ="<< hydro->runtime4<<endl;
+	//cout << "Kernel 5 time ="<< hydro->runtime5<<endl;
+	//cout << "MPI time ="<< hydro->mpitime<<endl;
+	//cout << "Dt time ="<< dttime<<endl;
 
     } // if mype
 
