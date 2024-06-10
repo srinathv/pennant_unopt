@@ -33,7 +33,7 @@ CXXFLAGS_OPENMP := -fopenmp #-qopenmp -xCORE-AVX512 -qopt-zmm-usage=high
 # end compiler-dependent flags
 
 # select optimized or debug
-CXXFLAGS := $(CXXFLAGS_OPT)
+CXXFLAGS := $(CXXFLAGS_OPT) $(CXXFLAGS_DEBUG)
 #CXXFLAGS := $(CXXFLAGS_DEBUG)
 
 # add mpi to compile (comment out for serial build)
