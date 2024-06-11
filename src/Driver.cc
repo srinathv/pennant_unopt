@@ -152,7 +152,7 @@ void Driver::run() {
         cout << endl;
         cout << "************************************" << endl;
         cout << "hydro cycle run time= " << setw(14) << runtime << endl;
-	cout << "FOM =                  " << setw(14) << (double) mesh->numz * cycle / runtime << endl;
+	cout << "FOM =                  " << setw(14) << (double) mesh->gnumz * cycle / runtime << endl;
         cout << "************************************" << endl;
 	//cout << "Kernel 1 time ="<< hydro->runtime1<<endl;
 	//cout << "Kernel 2 time ="<< hydro->runtime2<<endl;
