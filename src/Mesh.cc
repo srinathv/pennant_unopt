@@ -484,6 +484,8 @@ void Mesh::calcVols(
     fill(&zvol[zfirst], &zvol[zlast], 0.);
     fill(&zarea[zfirst], &zarea[zlast], 0.);
 
+    
+
     const double third = 1. / 3.;
     int count = 0;
     for (int s = sfirst; s < slast; ++s) {
@@ -496,8 +498,8 @@ void Mesh::calcVols(
         double sv = third * sa * (px[p1].x + px[p2].x + zx[z].x);
         sarea[s] = sa;
         svol[s] = sv;
-	write << "*************** on PE " << Parallel::mype << "*****************" << endl;
-	write <<  " s is " <<  s << "and sv is " << sv << endl; 
+	cout << "*************** on PE " << Parallel::mype << "*****************" << endl;
+	cout <<  " s is " <<  s << "and sv is " << sv << endl; 
         zarea[z] += sa;
         zvol[z] += sv;
 
