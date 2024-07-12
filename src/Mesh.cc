@@ -496,6 +496,8 @@ void Mesh::calcVols(
         double sv = third * sa * (px[p1].x + px[p2].x + zx[z].x);
         sarea[s] = sa;
         svol[s] = sv;
+	write << "*************** on PE " << Parallel::mype << "*****************" << endl;
+	write <<  " s is " <<  s << "and sv is " << sv << endl; 
         zarea[z] += sa;
         zvol[z] += sv;
 
