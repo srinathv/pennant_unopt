@@ -336,12 +336,12 @@ void Mesh::writeStats() {
     // make sure that boundary points aren't double-counted;
     // only count them if they are masters
     if (Parallel::numpe > 1) gnump -= numslv;
-     gnumz = numz;
+    int64_t gnumz = numz;
     int64_t gnums = nums;
     int64_t gnume = nume;
-    int gnumpch = numpch;
-    int gnumzch = numzch;
-    int gnumsch = numsch;
+    int64_t gnumpch = numpch;
+    int64_t gnumzch = numzch;
+    int64_t gnumsch = numsch;
 
     Parallel::globalSum(gnump);
     Parallel::globalSum(gnumz);
