@@ -505,7 +505,8 @@ void Mesh::calcVols(
 
 	if (sa <= 0.) {
         cout << "*************** on PE " << Parallel::mype << "*****************" << endl;
-	cout << " px[p2] = " << px[p2] << "px[p1] = " << px[p1] << "  zx[z] = " << zx[z] <<  " px[p1] = " << px[p1]<< endl;
+//	cout << " px[p2] = " <<  endl;
+	//cout << " px[p2] = " << px[p2] << "px[p1] = " << px[p1] << "  zx[z] = " << zx[z] <<  " px[p1] = " << px[p1]<< endl;
 	cout << "sa is " << sa << endl;
 	}
 
