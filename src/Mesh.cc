@@ -492,6 +492,7 @@ void Mesh::calcVols(
         int p1 = mapsp1[s];
         int p2 = mapsp2[s];
         int z = mapsz[s];
+	
 
         // compute side volumes, sum to zone
         double sa = 0.5 * cross(px[p2] - px[p1], zx[z] - px[p1]);
@@ -501,6 +502,12 @@ void Mesh::calcVols(
 //	cout <<  " s is " <<  s << "and sv is " << sv << endl; 
         zarea[z] += sa;
         zvol[z] += sv;
+
+	if (sa <= 0.) {
+        cout << "*************** on PE " << Parallel::mype << "*****************" << endl;
+	cout << " px[p2] = " << px[p2] << "px[p1] = " << px[p1] << "  zx[z] = " << " px[p1] = " << endl;
+	cout << "sa is " << sa << endl;
+	}
 
         // check for negative side volumes
         if (sv <= 0.) {
