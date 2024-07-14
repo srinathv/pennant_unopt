@@ -504,16 +504,13 @@ void Mesh::calcVols(
         zvol[z] += sv;
 
 	if (sa <= 0.) {
-        cout << "*************** on PE " << Parallel::mype << "*****************" << endl;
-//	printf("px[p2] = %d \n" , px[p2] ); 
-	//cout << " px[p2] = " << px[p2] << "px[p1] = " << px[p1] << "  zx[z] = " << zx[z] <<  " px[p1] = " << px[p1]<< endl;
-	cout << "sa is " << sa << endl;
+        cout << "*************** on PE " << Parallel::mype << ", sa is " << sa << endl;
 	}
 
         // check for negative side volumes
         if (sv <= 0.) {
-        cout << "*************** on PE " << Parallel::mype << "*****************" << endl;
-	cout << "sv is " << sv << endl;
+
+        cout << "*************** on PE " << Parallel::mype << ", sv is " << sv << endl;
 	count += 1;
 	}
 
