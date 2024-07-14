@@ -45,7 +45,7 @@ CXXFLAGS += -DUSE_MPI
 # add openmp flags (comment out for serial build)
 CXXFLAGS += $(CXXFLAGS_OPENMP) 
 #LDFLAGS := -Wno-unused-command-line-argument -L${MPICH_DIR}/../../../gtl/lib -lmpi_gtl_hsa -L$(MPICH_DIR)/lib -lmpi
-LDFLAGS := -Wno-unused-command-line-argument -L$(MPICH_DIR)/lib -lmpi
+LDFLAGS := -Wno-unused-command-line-argument -L$(MPICH_DIR)/lib -lmpi -lxpmem
 LDFLAGS += $(CXXFLAGS_OPENMP) #-L/cray/css/users/kjt/opt/profiler/newest/ -lprofiler
 
 LD := $(CXX)
