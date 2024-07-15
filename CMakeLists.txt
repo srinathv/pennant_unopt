@@ -15,7 +15,9 @@ list(APPEND CMAKE_PREFIX_PATH ${ROCM_PATH}/hip ${ROCM_PATH})
 # Preferred way of working: don't change options in this file. Instead, call cmake with
 # e.g. "-DPENNANT_MPI=OFF" if you want to change that setting
 option(PENNANT_USE_MPI "Build with MPI support" ON)
+option(PENNANT_USE_OPENMP "Build with OPENMP support" ON)
 option(PENNANT_USE_GPU_AWARE_MPI "Build with GPU-aware MPI. Requires supporting MPI stack" OFF)
+option(PENNANT_USE_XPMEM "XPMEM vs. CMA for all to all communication in MPI" OFF)
 option(PENNANT_TIMERS "Put timers around important code sections and print stats" OFF)
 option(PENNANT_ROCTX "Put important code sections in roctx ranges" OFF)
 option(PENNANT_FAST_MATH "Use math optimizations that may not be IEEE 764 compliant" OFF)
@@ -64,8 +66,6 @@ set(pennant_sources
   src/GenMesh.cc
   src/HydroBC.cc
   src/Hydro.cc
-  src/HydroGPU.cc
-  src/ImportGMV.cc
   src/InputFile.cc
   src/main.cc
   src/Mesh.cc
@@ -84,9 +84,10 @@ endif()
 if(PENNANT_USE_MPI)
   set(MPI_CXX_ADDITIONAL_INCLUDE_DIRS "$ENV{MPICH_DIR}/include")	  
   message("$ENV{MPICH_DIR} is MPICH_DIR") 
-  list(APPEND pennant_sources src/HydroMPI.cc)
+  #  list(APPEND pennant_sources src/HydroMPI.cc)
   list(APPEND PENNANT_COMPILATION_OPTIONS -I/${MPI_CXX_ADDITIONAL_INCLUDE_DIRS})
 endif()
+
 
 # PENNANT source file with functionality for timing various sections of the code
 if(PENNANT_TIMERS)
@@ -103,7 +104,8 @@ target_include_directories(pennant PRIVATE timers)
 # compilation options
 # todo: differentiate between Debug, Release, RelWithDebug builds
 if(PENNANT_GPU_VENDOR STREQUAL "AMD")
-	list(APPEND PENNANT_COMPILATION_OPTIONS "-g" "-O3" "-Wall" "-Wno-unused-result" "-Wno-unused-command-line-argument" "-Werror")
+	#list(APPEND PENNANT_COMPILATION_OPTIONS "-g" "-O3" "-Wall" "-Wno-unused-result" "-Wno-unused-command-line-argument" "-Werror")
+	list(APPEND PENNANT_COMPILATION_OPTIONS "-g" "-O3" "-Wall" "-Wno-unused-result" "-Wno-unused-command-line-argument" )
 endif()
 if(PENNANT_GPU_VENDOR STREQUAL "NVIDIA")
   list(APPEND PENNANT_COMPILATION_OPTIONS "-O3" "-Xcompiler" "-Wall -Wno-unknown-pragmas")
@@ -152,9 +154,9 @@ if(PENNANT_GPU_VENDOR STREQUAL "AMD")
     list(APPEND PENNANT_ARCH_LIST "gfx1030")
     set(PENNANT_HAVE_ARCH true)
   endif()
-  if(NOT PENNANT_HAVE_ARCH)
-    message(SEND_ERROR "You must specify at least one GPU architecture, e.g. -DPENNANT_ARCH_GFX90A=On")
-  endif()
+  #  if(NOT PENNANT_HAVE_ARCH)
+  # message(SEND_ERROR "You must specify at least one GPU architecture, e.g. -DPENNANT_ARCH_GFX90A=On")
+  #endif()
 endif()
 
 if(PENNANT_GPU_VENDOR STREQUAL "NVIDIA")
@@ -192,13 +194,26 @@ if(PENNANT_USE_MPI)
   target_link_libraries(pennant PRIVATE $ENV{MPICH_DIR}/lib/libmpi.so)
   #target_link_libraries(pennant PRIVATE MPI_CXX_LIBRARIES)
 endif()
+if(PENNANT_USE_OPENMP)
+  find_package(OpenMP)
+  if(OpenMP_CXX_FOUND)
+    target_link_libraries(pennant PRIVATE OpenMP::OpenMP_CXX)
+    target_link_options(pennant PRIVATE "-fopenmp")  # can be done much more correctly
+  endif()
+endif()
 
 if(PENNANT_USE_GPU_AWARE_MPI)
 	set(PENNANT_LINK_OPTIONS "$ENV{PE_MPICH_GTL_DIR_${lc_pennant_gpu_vendor}_${PENNANT_ARCH_LIST}}" "$ENV{PE_MPICH_GTL_LIBS_${lc_pennant_gpu_vendor}_${PENNANT_ARCH_LIST}}")
+
   target_compile_definitions(pennant PRIVATE USE_GPU_AWARE_MPI)
   target_link_options(pennant PRIVATE ${PENNANT_LINK_OPTIONS})
   #  target_link_options(pennant PRIVATE "-L/opt/cray/pe/mpich/8.1.28/gtl/lib" "-lmpi_gtl_hsa")  
 endif()
+
+if(PENNANT_USE_XPMEM)
+	set(PENNANT_LINK_OPTIONS ${PENNANT_LINK_OPTIONS} -lxpmem)
+  	target_link_options(pennant PRIVATE ${PENNANT_LINK_OPTIONS})
+endif()   
 
 message("************* PENNANT_LINK_OPTIONS" , ${PENNANT_LINK_OPTIONS})
 
@@ -223,6 +238,8 @@ endif()
 foreach(PENNANT_ARCH ${PENNANT_ARCH_LIST})
   set_property(TARGET pennant APPEND PROPERTY ADDITIONAL_CLEAN_FILES HydroGPU.${PENNANT_ARCH}.s)
 endforeach()
+
+
 
 #install(PROGRAMS pennant DESTINATION ${CMAKE_INSTALL_DIR})
 install(TARGETS pennant)

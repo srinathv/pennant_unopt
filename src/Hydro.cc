@@ -115,7 +115,7 @@ void Hydro::init() {
         const vector<double>& subrgn = mesh->subregion;
         if (!subrgn.empty()) {
             const double eps = 1.e-12;
-            #pragma ivdep
+//            #pragma ivdep
             for (int z = zfirst; z < zlast; ++z) {
                 if (zx[z].x > (subrgn[0] - eps) &&
                     zx[z].x < (subrgn[1] + eps) &&
@@ -127,7 +127,7 @@ void Hydro::init() {
             }
         }
 
-        #pragma ivdep
+//        #pragma ivdep
         for (int z = zfirst; z < zlast; ++z) {
             zm[z] = zr[z] * zvol[z];
             zetot[z] = ze[z] * zm[z];
@@ -156,7 +156,7 @@ void Hydro::initRadialVel(
     const double2* px = mesh->px;
     const double eps = 1.e-12;
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         double pmag = length(px[p]);
         if (pmag > eps)
@@ -355,7 +355,7 @@ void Hydro::advPosHalf(
 
     double dth = 0.5 * dt;
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pxp[p] = px0[p] + pu0[p] * dth;
     }
@@ -372,7 +372,7 @@ void Hydro::advPosFull(
         const int pfirst,
         const int plast) {
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pu[p] = pu0[p] + pa[p] * dt;
         px[p] = px0[p] + 0.5 * (pu[p] + pu0[p]) * dt;
@@ -389,7 +389,7 @@ void Hydro::calcCrnrMass(
         const int sfirst,
         const int slast) {
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int s = sfirst; s < slast; ++s) {
         int s3 = mesh->mapss3[s];
         int z = mesh->mapsz[s];
@@ -408,7 +408,7 @@ void Hydro::sumCrnrForce(
         const int sfirst,
         const int slast) {
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int s = sfirst; s < slast; ++s) {
         int s3 = mesh->mapss3[s];
 
@@ -428,7 +428,7 @@ void Hydro::calcAccel(
 
     const double fuzz = 1.e-99;
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pa[p] = pf[p] / max(pmass[p], fuzz);
     }
@@ -443,7 +443,7 @@ void Hydro::calcRho(
         const int zfirst,
         const int zlast) {
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         zr[z] = zm[z] / zvol[z];
     }
@@ -498,7 +498,7 @@ void Hydro::calcWorkRate(
         const int zfirst,
         const int zlast) {
     double dtinv = 1. / dt;
-    #pragma ivdep
+//    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         double dvol = zvol[z] - zvol0[z];
         zwrate[z] = (zw[z] + zp[z] * dvol) * dtinv;
@@ -515,7 +515,7 @@ void Hydro::calcEnergy(
         const int zlast) {
 
     const double fuzz = 1.e-99;
-    #pragma ivdep
+//    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         ze[z] = zetot[z] / (zm[z] + fuzz);
     }

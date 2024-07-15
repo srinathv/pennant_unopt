@@ -41,7 +41,7 @@ void HydroBC::applyFixedBC(
         const int bfirst,
         const int blast) {
 
-    #pragma ivdep
+//    #pragma ivdep
     for (int b = bfirst; b < blast; ++b) {
         int p = mapbp[b];
 
