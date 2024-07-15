@@ -149,7 +149,7 @@ void Mesh::init() {
 
     }
 
-    numsbad = 0;
+    int numsbad = 0;
     #pragma omp parallel for schedule(static)
     for (int sch = 0; sch < numsch; ++sch) {
         int sfirst = schsfirst[sch];
