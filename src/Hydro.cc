@@ -193,7 +193,7 @@ void Hydro::doCycle(
     double* smf = mesh->smf;
     double* zdl = mesh->zdl;
 
-
+    cout << " in doCycle and mesh->numsbad is " << mesh->numsbad << " on my PE " << Parallel::mype << endl ; 
     // Begin hydro cycle
    struct timeval sbegin;
    gettimeofday(&sbegin, NULL);
