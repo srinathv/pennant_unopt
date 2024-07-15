@@ -94,6 +94,7 @@ void Mesh::init() {
     cellnodes.resize(0);
     // now populate edge maps using side maps
     initEdges();
+    initCorners();
 
     // populate chunk information
     initChunks();
@@ -215,6 +216,27 @@ void Mesh::initEdges() {
     }  // for s
 
     nume = e;
+
+}
+
+
+void Mesh::initCorners() {
+
+    numc = nums;
+
+    mapcz = Memory::alloc<int>(numc);
+    mapcp = Memory::alloc<int>(numc);
+    mapsc1 = Memory::alloc<int>(nums);
+    mapsc2 = Memory::alloc<int>(nums);
+
+    for (int s = 0; s < nums; ++s) {
+        int c = s;
+        int c2 = mapss4[s];
+        mapsc1[s] = c;
+        mapsc2[s] = c2;
+        mapcz[c] = mapsz[s];
+        mapcp[c] = mapsp1[s];
+    }
 
 }
 
