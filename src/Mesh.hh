@@ -47,6 +47,7 @@ public:
     int nump, nume, numz, nums, numc;
                        // number of points, edges, zones,
                        // sides, corners, resp.
+    int64_t gnumz;         // global number of zones, summed over all MPI ranks. Used in FOM computation
     int numsbad;       // number of bad sides (negative volume)
     int* mapsp1;       // maps: side -> points 1 and 2
     int* mapsp2;

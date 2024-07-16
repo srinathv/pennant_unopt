@@ -338,7 +338,7 @@ void Mesh::writeStats() {
     // make sure that boundary points aren't double-counted;
     // only count them if they are masters
     if (Parallel::numpe > 1) gnump -= numslv;
-    int64_t gnumz = numz;
+    gnumz = numz; // now a member of the Mesh class since used in FOM
     int64_t gnums = nums;
     int64_t gnume = nume;
     int gnumpch = numpch;

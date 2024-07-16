@@ -146,6 +146,7 @@ void Driver::run() {
         cout << endl;
         cout << "************************************" << endl;
         cout << "hydro cycle run time= " << setw(14) << runtime << endl;
+	cout << "FOM =                  " << setw(14) << (double) mesh->gnumz * cycle / runtime << endl;
         cout << "************************************" << endl;
 
     } // if mype
