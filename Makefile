@@ -19,10 +19,10 @@ BINARY := $(BUILDDIR)/$(PRODUCT)
 #CXXFLAGS_OPENMP := -fopenmp
 
 # intel flags:
-CXX := CC
+#########CXX := icpc
 CXXFLAGS_DEBUG := -g
-CXXFLAGS_OPT := -O3 #-fast -fno-alias
-CXXFLAGS_OPENMP := -fopenmp #-qopenmp -xCORE-AVX512 -qopt-zmm-usage=high
+CXXFLAGS_OPT := -O3 -fast 
+CXXFLAGS_OPENMP := -openmp
 
 # pgi flags:
 #CXX := pgCC
@@ -33,20 +33,18 @@ CXXFLAGS_OPENMP := -fopenmp #-qopenmp -xCORE-AVX512 -qopt-zmm-usage=high
 # end compiler-dependent flags
 
 # select optimized or debug
-CXXFLAGS := $(CXXFLAGS_OPT) $(CXXFLAGS_DEBUG)
+CXXFLAGS := $(CXXFLAGS_OPT)
 #CXXFLAGS := $(CXXFLAGS_DEBUG)
 
 # add mpi to compile (comment out for serial build)
 # the following assumes the existence of an mpi compiler
 # wrapper called mpicxx
-CXX := CC
+CXX := CC 
 CXXFLAGS += -DUSE_MPI
 
 # add openmp flags (comment out for serial build)
-CXXFLAGS += $(CXXFLAGS_OPENMP) 
-#LDFLAGS := -Wno-unused-command-line-argument -L${MPICH_DIR}/../../../gtl/lib -lmpi_gtl_hsa -L$(MPICH_DIR)/lib -lmpi
-LDFLAGS := -Wno-unused-command-line-argument -L$(MPICH_DIR)/lib -lmpi -lxpmem
-LDFLAGS += $(CXXFLAGS_OPENMP) #-L/cray/css/users/kjt/opt/profiler/newest/ -lprofiler
+CXXFLAGS += $(CXXFLAGS_OPENMP)
+LDFLAGS += $(CXXFLAGS_OPENMP)
 
 LD := $(CXX)
 
@@ -69,7 +67,7 @@ $(BUILDDIR)/%.o : $(SRCDIR)/%.cc
 $(BUILDDIR)/%.d : $(SRCDIR)/%.cc
 	@echo making depends for $<
 	$(maketargetdir)
-	@$(CXX) $(CXXFLAGS) $(CXXINCLUDES) -M $< | sed "1s![^ \t]\+\.o!$(@:.d=.o) $@!" >$@
+	@$(CXX) $(CXXFLAGS) $(CXXINCLUDES) -MM $< | sed "1s![^ \t]\+\.o!$(@:.d=.o) $@!" >$@
 
 define maketargetdir
 	-@mkdir -p $(dir $@) >/dev/null 2>&1
