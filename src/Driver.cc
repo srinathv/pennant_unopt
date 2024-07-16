@@ -4,7 +4,7 @@
  *  Created on: Jan 23, 2012
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -66,7 +66,6 @@ Driver::Driver(const InputFile* inp, const string& pname)
     // initialize mesh, hydro
     mesh = new Mesh(inp);
     hydro = new Hydro(inp, mesh);
-    dttime=0.0;
 
 }
 
@@ -101,16 +100,11 @@ void Driver::run() {
         cycle += 1;
 
         // get timestep
-         struct timeval sbegin,send;
-	double begin, last;
-        gettimeofday(&sbegin, NULL);
-        begin = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
         calcGlobalDt();
-	gettimeofday(&send, NULL);
-        last = send.tv_sec + send.tv_usec * 1.e-6;
-	dttime += last-begin;
+
         // begin hydro cycle
         hydro->doCycle(dt);
+
         time += dt;
 
         if (mype == 0 &&
@@ -152,15 +146,7 @@ void Driver::run() {
         cout << endl;
         cout << "************************************" << endl;
         cout << "hydro cycle run time= " << setw(14) << runtime << endl;
-	cout << "FOM =                  " << setw(14) << (double) mesh->gnumz * cycle / runtime << endl;
         cout << "************************************" << endl;
-	//cout << "Kernel 1 time ="<< hydro->runtime1<<endl;
-	//cout << "Kernel 2 time ="<< hydro->runtime2<<endl;
-	//cout << "Kernel 3 time ="<< hydro->runtime3<<endl;
-	//cout << "Kernel 4 time ="<< hydro->runtime4<<endl;
-	//cout << "Kernel 5 time ="<< hydro->runtime5<<endl;
-	//cout << "MPI time ="<< hydro->mpitime<<endl;
-	//cout << "Dt time ="<< dttime<<endl;
 
     } // if mype
 

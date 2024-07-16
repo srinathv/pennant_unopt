@@ -4,7 +4,7 @@
  *  Created on: Jan 5, 2012
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -94,7 +94,6 @@ void Mesh::init() {
     cellnodes.resize(0);
     // now populate edge maps using side maps
     initEdges();
-    initCorners();
 
     // populate chunk information
     initChunks();
@@ -149,7 +148,7 @@ void Mesh::init() {
 
     }
 
-    int numsbad = 0;
+    numsbad = 0;
     #pragma omp parallel for schedule(static)
     for (int sch = 0; sch < numsch; ++sch) {
         int sfirst = schsfirst[sch];
@@ -216,27 +215,6 @@ void Mesh::initEdges() {
     }  // for s
 
     nume = e;
-
-}
-
-
-void Mesh::initCorners() {
-
-    numc = nums;
-
-    mapcz = Memory::alloc<int>(numc);
-    mapcp = Memory::alloc<int>(numc);
-    mapsc1 = Memory::alloc<int>(nums);
-    mapsc2 = Memory::alloc<int>(nums);
-
-    for (int s = 0; s < nums; ++s) {
-        int c = s;
-        int c2 = mapss4[s];
-        mapsc1[s] = c;
-        mapsc2[s] = c2;
-        mapcz[c] = mapsz[s];
-        mapcp[c] = mapsp1[s];
-    }
 
 }
 
@@ -308,8 +286,7 @@ void Mesh::initInvMap() {
             int cp = pcpair[i+1].second;
             if (p == pp) mapccnext[c] = cp;
         }
-        }
-
+    }
 }
 
 
@@ -364,9 +341,9 @@ void Mesh::writeStats() {
     int64_t gnumz = numz;
     int64_t gnums = nums;
     int64_t gnume = nume;
-    int64_t gnumpch = numpch;
-    int64_t gnumzch = numzch;
-    int64_t gnumsch = numsch;
+    int gnumpch = numpch;
+    int gnumzch = numzch;
+    int gnumsch = numsch;
 
     Parallel::globalSum(gnump);
     Parallel::globalSum(gnumz);
@@ -509,35 +486,23 @@ void Mesh::calcVols(
     fill(&zvol[zfirst], &zvol[zlast], 0.);
     fill(&zarea[zfirst], &zarea[zlast], 0.);
 
-    
-
     const double third = 1. / 3.;
     int count = 0;
     for (int s = sfirst; s < slast; ++s) {
         int p1 = mapsp1[s];
         int p2 = mapsp2[s];
         int z = mapsz[s];
-	
 
         // compute side volumes, sum to zone
         double sa = 0.5 * cross(px[p2] - px[p1], zx[z] - px[p1]);
         double sv = third * sa * (px[p1].x + px[p2].x + zx[z].x);
         sarea[s] = sa;
         svol[s] = sv;
-//	cout <<  " s is " <<  s << "and sv is " << sv << endl; 
         zarea[z] += sa;
         zvol[z] += sv;
 
-	if (sa <= 0.) {
-        cout << "*************** on PE " << Parallel::mype << ", sa is " << sa << endl;
-	}
-
         // check for negative side volumes
-        if (sv <= 0.) {
-
-        cout << "*************** on PE " << Parallel::mype << ", sv is " << sv << endl;
-	count += 1;
-	}
+        if (sv <= 0.) count += 1;
 
     } // for s
 
@@ -650,7 +615,6 @@ void Mesh::parallelGather(
     // Store results in proxy buffer.
 //    vector<MPI_Request> request(numslvpe);
     MPI_Request* request = Memory::alloc<MPI_Request>(numslvpe);
-//    cout<<Parallel::mype<<":msg_size:"<<type_size<<"num_irecv"<<numslvpe<<endl;
     for (int slvpe = 0; slvpe < numslvpe; ++slvpe) {
         int pe = mapslvpepe[slvpe];
         int nprx = slvpenumprx[slvpe];
@@ -733,7 +697,6 @@ void Mesh::parallelScatter(
         int pe = mapmstrpepe[mstrpe];
         int nslv = mstrpenumslv[mstrpe];
         int slv1 = mapmstrpeslv1[mstrpe];
-//	cout<<Parallel::mype<<":msg_size:"<<type_size<<" nslv:"<<nslv<<" type_size:"<<type_size<<endl;
         MPI_Irecv(&slvvar[slv1], nslv * type_size, MPI_BYTE,
                 pe, tagmpi, MPI_COMM_WORLD,  &request[mstrpe]);
     }

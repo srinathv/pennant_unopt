@@ -4,7 +4,7 @@
  *  Created on: Jan 5, 2012
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -44,22 +44,13 @@ public:
     // mesh variables
     // (See documentation for more details on the mesh
     //  data structures...)
-
-    //int nump, numpx, numpy, nume, numz, nums, numc;
-  int nump, numpx, numpy, nume, numz,  nums, numc;
-                                   // number of points, edges, zones,
-                                   // sides, corners, resp.
-    int64_t gnumz;         // global number of zones, summed over all MPI ranks. Used in FOM computation
-    int* mapcz;        // map: corner -> zone
-    int* mapcp;        // map: corner -> point
-    int* mapep1;       // maps: edge -> points 1 and 2
-    int* mapep2;
+    int nump, nume, numz, nums, numc;
+                       // number of points, edges, zones,
+                       // sides, corners, resp.
+    int numsbad;       // number of bad sides (negative volume)
     int* mapsp1;       // maps: side -> points 1 and 2
     int* mapsp2;
-    int* mapsc1;       // maps: side -> corners 1 and 2
-    int* mapsc2;
     int* mapsz;        // map: side -> zone
-    int* mapzs;        // map: zone -> first side
     int* mapse;        // map: side -> edge
     int* mapss3;       // map: side -> previous side
     int* mapss4;       // map: side -> next side
@@ -83,8 +74,6 @@ public:
     int* mapslvp;      // map: slave -> corresponding (slave) point
 
     int* znump;        // number of points in zone
-
-    int numsbad;       // number of bad sides
 
     double2* px;       // point coordinates
     double2* ex;       // edge center coordinates
@@ -132,7 +121,10 @@ public:
             const std::vector<int>& cellsize,
             const std::vector<int>& cellnodes);
     void initEdges();
-    void initCorners();
+
+    // populate chunk information
+    void initChunks();
+
     // populate inverse map
     void initInvMap();
 
@@ -143,9 +135,6 @@ public:
             const std::vector<int>& masterslvpes,
             const std::vector<int>& masterslvcounts,
             const std::vector<int>& masterpoints);
-
-    // populate chunk information
-    void initChunks();
 
     // write mesh statistics
     void writeStats();

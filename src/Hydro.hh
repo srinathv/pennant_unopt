@@ -4,7 +4,7 @@
  *  Created on: Dec 22, 2011
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -75,12 +75,6 @@ public:
     double2* sfq;      // side force from artificial visc.
     double2* sft;      // side force from tts
     double2* cftot;    // corner force, total from all sources
-    double runtime1;
-    double runtime2;
-    double runtime3;
-    double runtime4;
-    double runtime5;
-    double mpitime;
 
     Hydro(const InputFile* inp, Mesh* m);
     ~Hydro();

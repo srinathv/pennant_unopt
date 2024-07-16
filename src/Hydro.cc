@@ -4,7 +4,7 @@
  *  Created on: Dec 22, 2011
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
-#include <sys/time.h>
+
 #include "Parallel.hh"
 #include "Memory.hh"
 #include "InputFile.hh"
@@ -29,7 +29,7 @@
 #include "TTS.hh"
 #include "QCS.hh"
 #include "HydroBC.hh"
-//#include "/opt/cray/pe/perftools/7.0.0/include/pat_api.h"
+
 using namespace std;
 
 
@@ -115,7 +115,7 @@ void Hydro::init() {
         const vector<double>& subrgn = mesh->subregion;
         if (!subrgn.empty()) {
             const double eps = 1.e-12;
-//            #pragma ivdep
+            #pragma ivdep
             for (int z = zfirst; z < zlast; ++z) {
                 if (zx[z].x > (subrgn[0] - eps) &&
                     zx[z].x < (subrgn[1] + eps) &&
@@ -127,7 +127,7 @@ void Hydro::init() {
             }
         }
 
-//        #pragma ivdep
+        #pragma ivdep
         for (int z = zfirst; z < zlast; ++z) {
             zm[z] = zr[z] * zvol[z];
             zetot[z] = ze[z] * zm[z];
@@ -145,7 +145,7 @@ void Hydro::init() {
     }  // for pch
 
     resetDtHydro();
-    runtime1 = runtime2 = runtime3 = runtime4 = runtime5=mpitime=0.0;
+
 }
 
 
@@ -156,7 +156,7 @@ void Hydro::initRadialVel(
     const double2* px = mesh->px;
     const double eps = 1.e-12;
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         double pmag = length(px[p]);
         if (pmag > eps)
@@ -193,11 +193,7 @@ void Hydro::doCycle(
     double* smf = mesh->smf;
     double* zdl = mesh->zdl;
 
-    cout << " in doCycle and mesh->numsbad is " << mesh->numsbad << " on my PE " << Parallel::mype << endl ; 
     // Begin hydro cycle
-   struct timeval sbegin;
-   gettimeofday(&sbegin, NULL);
-   double tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
     #pragma omp parallel for schedule(static)
     for (int pch = 0; pch < numpch; ++pch) {
         int pfirst = mesh->pchpfirst[pch];
@@ -211,12 +207,6 @@ void Hydro::doCycle(
         // 1. advance mesh to center of time step
         advPosHalf(px0, pu0, dt, pxp, pfirst, plast);
     } // for pch
-    struct timeval send;
-    gettimeofday(&send, NULL);
-    double tend = send.tv_sec + send.tv_usec * 1.e-6;
-    runtime1 += tend - tcurr ;
-    gettimeofday(&sbegin, NULL);
-    tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
 
     #pragma omp parallel for schedule(static)
     for (int sch = 0; sch < numsch; ++sch) {
@@ -251,23 +241,11 @@ void Hydro::doCycle(
         qcs->calcForce(sfq, sfirst, slast);
         sumCrnrForce(sfp, sfq, sft, cftot, sfirst, slast);
     }  // for sch
-   gettimeofday(&send, NULL);
-   tend = send.tv_sec + send.tv_usec * 1.e-6;
-   runtime2 += tend - tcurr ;
-   
     mesh->checkBadSides();
 
-    gettimeofday(&sbegin, NULL);
-    tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
     // sum corner masses, forces to points
     mesh->sumToPoints(cmaswt, pmaswt);
     mesh->sumToPoints(cftot, pf);
-    gettimeofday(&send, NULL);
-   tend = send.tv_sec + send.tv_usec * 1.e-6;
-   mpitime += tend - tcurr ;
-
-    gettimeofday(&sbegin, NULL);
-    tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
 
     #pragma omp parallel for schedule(static)
     for (int pch = 0; pch < numpch; ++pch) {
@@ -288,14 +266,8 @@ void Hydro::doCycle(
         // 6. advance mesh to end of time step
         advPosFull(px0, pu0, pap, dt, px, pu, pfirst, plast);
     }  // for pch
-    gettimeofday(&send, NULL);
-    tend = send.tv_sec + send.tv_usec * 1.e-6;
-    runtime3 += tend - tcurr ;
 
     resetDtHydro();
-
-    gettimeofday(&sbegin, NULL);
-    tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
 
     #pragma omp parallel for schedule(static)
     for (int sch = 0; sch < numsch; ++sch) {
@@ -314,14 +286,7 @@ void Hydro::doCycle(
         calcWork(sfp, sfq, pu0, pu, pxp, dt, zw, zetot,
                 sfirst, slast);
     }  // for sch
-   gettimeofday(&send, NULL);
-   tend = send.tv_sec + send.tv_usec * 1.e-6;
-   runtime4 += tend - tcurr ;
-
     mesh->checkBadSides();
-
-    gettimeofday(&sbegin, NULL);
-    tcurr = sbegin.tv_sec + sbegin.tv_usec * 1.e-6;
 
     #pragma omp parallel for schedule(static)
     for (int zch = 0; zch < mesh->numzch; ++zch) {
@@ -338,9 +303,6 @@ void Hydro::doCycle(
         // 9.  compute timestep for next cycle
         calcDtHydro(zdl, zvol, zvol0, dt, zfirst, zlast);
     }  // for zch
-   gettimeofday(&send, NULL);
-   tend = send.tv_sec + send.tv_usec * 1.e-6;
-   runtime5 += tend - tcurr ;
 
 }
 
@@ -355,7 +317,7 @@ void Hydro::advPosHalf(
 
     double dth = 0.5 * dt;
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pxp[p] = px0[p] + pu0[p] * dth;
     }
@@ -372,7 +334,7 @@ void Hydro::advPosFull(
         const int pfirst,
         const int plast) {
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pu[p] = pu0[p] + pa[p] * dt;
         px[p] = px0[p] + 0.5 * (pu[p] + pu0[p]) * dt;
@@ -389,7 +351,7 @@ void Hydro::calcCrnrMass(
         const int sfirst,
         const int slast) {
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int s = sfirst; s < slast; ++s) {
         int s3 = mesh->mapss3[s];
         int z = mesh->mapsz[s];
@@ -408,7 +370,7 @@ void Hydro::sumCrnrForce(
         const int sfirst,
         const int slast) {
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int s = sfirst; s < slast; ++s) {
         int s3 = mesh->mapss3[s];
 
@@ -428,7 +390,7 @@ void Hydro::calcAccel(
 
     const double fuzz = 1.e-99;
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int p = pfirst; p < plast; ++p) {
         pa[p] = pf[p] / max(pmass[p], fuzz);
     }
@@ -443,7 +405,7 @@ void Hydro::calcRho(
         const int zfirst,
         const int zlast) {
 
-//    #pragma ivdep
+    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         zr[z] = zm[z] / zvol[z];
     }
@@ -498,7 +460,7 @@ void Hydro::calcWorkRate(
         const int zfirst,
         const int zlast) {
     double dtinv = 1. / dt;
-//    #pragma ivdep
+    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         double dvol = zvol[z] - zvol0[z];
         zwrate[z] = (zw[z] + zp[z] * dvol) * dtinv;
@@ -515,7 +477,7 @@ void Hydro::calcEnergy(
         const int zlast) {
 
     const double fuzz = 1.e-99;
-//    #pragma ivdep
+    #pragma ivdep
     for (int z = zfirst; z < zlast; ++z) {
         ze[z] = zetot[z] / (zm[z] + fuzz);
     }

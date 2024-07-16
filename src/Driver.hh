@@ -4,7 +4,7 @@
  *  Created on: Jan 23, 2012
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -29,7 +29,7 @@ public:
     Hydro *hydro;
 
     std::string probname;          // problem name
-    double time,dttime;                   // simulation time
+    double time;                   // simulation time
     int cycle;                     // simulation cycle number
     double tstop;                  // simulation stop time
     int cstop;                     // simulation stop cycle

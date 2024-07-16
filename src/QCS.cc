@@ -4,7 +4,7 @@
  *  Created on: Feb 21, 2012
  *      Author: cferenba
  *
- * Copyright (c) 2012, Los Alamos National Security, LLC.
+ * Copyright (c) 2012, Triad National Security, LLC.
  * All rights reserved.
  * Use of this source code is governed by a BSD-style open-source
  * license; see top-level LICENSE file for full license text.
@@ -249,14 +249,14 @@ void QCS::setQCnForce(
         double rmu = zkur * zrp[z] * c0evol[c0];
         c0rmu[c0] = ((c0div[c0] > 0.0) ? 0. : rmu);
 
-  //  } // for c
+    } // for c
 
     // [4.2] Compute the c0qe for each corner
- //   #pragma ivdep
- //   for (int c = cfirst; c < clast; ++c) {
+    #pragma ivdep
+    for (int c = cfirst; c < clast; ++c) {
         int s4 = c;
         int s = mesh->mapss3[s4];
-       // int c0 = c - cfirst;
+        int c0 = c - cfirst;
         int p = mesh->mapsp2[s];
         // Associated point and edge 1
         int p1 = mesh->mapsp1[s];
@@ -294,27 +294,23 @@ void QCS::setForce(
     double* c0w = Memory::alloc<double>(clast - cfirst);
 
     // [5.1] Preparation of extra variables
-/*    #pragma ivdep
+    #pragma ivdep
     for (int c = cfirst; c < clast; ++c) {
         int c0 = c - cfirst;
         double csin2 = 1.0 - c0cos[c0] * c0cos[c0];
         c0w[c0]   = ((csin2 < 1.e-4) ? 0. : c0area[c0] / csin2);
         c0cos[c0] = ((csin2 < 1.e-4) ? 0. : c0cos[c0]);
     } // for c
-*/
+
     // [5.2] Set-Up the forces on corners
     #pragma ivdep
     for (int s = sfirst; s < slast; ++s) {
-	
         // Associated corners 1 and 2, and edge
         int c1 = s;
         int c10 = c1 - cfirst;
         int c2 = mesh->mapss4[s];
         int c20 = c2 - cfirst;
         int e = mesh->mapse[s];
-	double csin2 = 1.0 - c0cos[c10] * c0cos[c10];
-        c0w[c10]   = ((csin2 < 1.e-4) ? 0. : c0area[c10] / csin2);
-        c0cos[c10] = ((csin2 < 1.e-4) ? 0. : c0cos[c10]);
         // Edge length for c1, c2 contribution to s
         double el = elen[e];
 
@@ -361,10 +357,10 @@ void QCS::setVelDiff(
         dux = (lenx > 0. ? abs(dux) / lenx : 0.);
 
         z0tmp[z0] = max(z0tmp[z0], dux);
-//    }
+    }
 
-//    for (int z = zfirst; z < zlast; ++z) {
-//        int z0 = z - zfirst;
+    for (int z = zfirst; z < zlast; ++z) {
+        int z0 = z - zfirst;
         zdu[z] = q1 * zss[z] + 2. * q2 * z0tmp[z0];
     }
 
